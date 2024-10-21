@@ -1,0 +1,14 @@
+services:
+  postgresdb:
+    env_file:
+      - .env  # Вказуємо шлях до файлу .env
+    image: postgres
+    environment:
+      POSTGRES_DB: "${DATASOURCE_NAME}"
+      POSTGRES_USER: "${DATASOURCE_USERNAME}"
+      POSTGRES_PASSWORD: "${DATASOURCE_PASSWORD}"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - "${VOLUMES_PATH}"
+    ports:
+      - "${DATABASE_PORTS}"
