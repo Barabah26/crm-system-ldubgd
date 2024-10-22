@@ -113,31 +113,31 @@ public class StatementController {
         return ResponseEntity.ok(statements);
     }
 
-    @DeleteMapping("/ready") //
-    public ResponseEntity<Void> completeStatementIfReady(
-            @RequestParam Long statementId,
-            @RequestParam(value = "status", required = false) StatementStatus status,
-            @RequestParam(value = "faculty", required = false) String faculty) {
+//    @DeleteMapping("/ready")
+//    public ResponseEntity<Void> completeStatementIfReady(
+//            @RequestParam Long statementId,
+//            @RequestParam(value = "status", required = false) StatementStatus status,
+//            @RequestParam(value = "faculty", required = false) String faculty) {
+//
+//        log.info("Received request to delete statements with status: {} and faculty: {}", status, faculty);
+//
+//        if (status == null || faculty == null || !status.equals(StatementStatus.READY)) {
+//            log.warn("Bad request: status or faculty is null or status is not READY");
+//            return ResponseEntity.badRequest().build();
+//        }
+//
+//        try {
+//            log.info("Attempting to delete statements with status: {} and faculty: {}", status, faculty);
+//            statementService.deleteStatementIfReady(statementId, status, faculty);
+//            log.info("Successfully deleted statements with status: {} and faculty: {}", status, faculty);
+//            return ResponseEntity.noContent().build();
+//        } catch (Exception e) {
+//            log.error("Error occurred while deleting statements with status: {} and faculty: {}. Error: {}", status, faculty, e.getMessage(), e);
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//        }
+//    }
 
-        log.info("Received request to delete statements with status: {} and faculty: {}", status, faculty);
-
-        if (status == null || faculty == null || !status.equals(StatementStatus.READY)) {
-            log.warn("Bad request: status or faculty is null or status is not READY");
-            return ResponseEntity.badRequest().build();
-        }
-
-        try {
-            log.info("Attempting to delete statements with status: {} and faculty: {}", status, faculty);
-            statementService.deleteStatementIfReady(statementId, status, faculty);
-            log.info("Successfully deleted statements with status: {} and faculty: {}", status, faculty);
-            return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            log.error("Error occurred while deleting statements with status: {} and faculty: {}. Error: {}", status, faculty, e.getMessage(), e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @GetMapping("/searchByName") //
+    @GetMapping("/searchByName")
     public ResponseEntity<?> searchUsersByName(@RequestParam String name) {
         try {
             List<StatementDto> users = statementService.searchByName(name);
