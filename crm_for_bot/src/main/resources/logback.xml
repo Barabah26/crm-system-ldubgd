@@ -2,12 +2,12 @@
     <!-- Конфігурація апендера для запису логів у файл -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <!-- Назва файлу логів -->
-        <file>appLogs/crmLogs/logFileCrm.log</file>
+        <file>appLogs/backendForSiteLogs/backendForSiteLog.log</file>
 
         <!-- Налаштування ротації файлів логів -->
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- Формат назви ротаційних файлів: створення нових файлів кожну годину -->
-            <fileNamePattern>appLogs/crmLogs/logFileCrm.%d{yyyy-MM-dd.HH}.log</fileNamePattern>
+            <fileNamePattern>appLogs/backendForSiteLogs/backendForSiteLog.%d{yyyy-MM-dd.HH}.log</fileNamePattern>
             <!-- Максимальний час зберігання файлів логів (7 днів) -->
             <maxHistory>7</maxHistory>
             <!-- Зберігати файли за допомогою стратегії зберігання -->
