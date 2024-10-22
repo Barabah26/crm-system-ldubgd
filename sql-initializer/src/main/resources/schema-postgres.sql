@@ -43,7 +43,7 @@ CREATE TABLE statement (
     phone_number VARCHAR(20),
     faculty TEXT,
     type_of_statement TEXT,
-    telegram_id BIGINT UNIQUE
+    telegram_id BIGINT
 );
 
 -- Таблиця для зберігання статусу заявки
