@@ -64,6 +64,8 @@ dockerConfig/.env
 /dist/
 /nbdist/
 /.nb-gradle/
+node_modules/
+
 
 # Build directories
 build/
