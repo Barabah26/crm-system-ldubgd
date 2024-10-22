@@ -7,31 +7,31 @@ import PrivateRoute from './components/PrivateRoute';
 import SuperAdminPage from './components/SuperAdminPage';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route
-          path="/statements"
-          element={
-            <PrivateRoute>
-              <HeaderComponent />
-              <ListStatementComponent />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/admin"
-          element={
-            <PrivateRoute requiredRole="ADMIN">
-              <HeaderComponent />
-              <SuperAdminPage />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<LoginPage />} />
+                <Route
+                    path="/statements"
+                    element={
+                        <PrivateRoute requiredRole="USER"> {/* Доступ для користувачів з роллю USER */}
+                            <HeaderComponent />
+                            <ListStatementComponent />
+                        </PrivateRoute>
+                    }
+                />
+                <Route
+                    path="/admin"
+                    element={
+                        <PrivateRoute requiredRole="ADMIN">
+                            <HeaderComponent />
+                            <SuperAdminPage />
+                        </PrivateRoute>
+                    }
+                />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;

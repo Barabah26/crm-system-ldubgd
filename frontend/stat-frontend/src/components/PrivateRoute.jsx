@@ -1,12 +1,24 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children, requiredRole }) => {
   const accessToken = localStorage.getItem('accessToken');
-  const userRole = localStorage.getItem('userRole'); // Get user role from localStorage
+  const userRole = localStorage.getItem('userRole');
+  const location = useLocation();
 
-  // Check if user is authenticated and has the required role
   const isAuthenticated = !!accessToken;
+
+  // Якщо користувач аутентифікований і має роль ADMIN, і намагається зайти на /statements, перенаправляємо на логін
+  if (isAuthenticated && userRole === 'ADMIN' && location.pathname === '/statements') {
+    return <Navigate to="/" />; // Перенаправляємо на сторінку логіну
+  }
+
+  // Якщо користувач намагається зайти на /admin без ролі ADMIN, перенаправляємо на головну сторінку
+  if (location.pathname === '/admin' && userRole !== 'ADMIN') {
+    return <Navigate to="/" />;
+  }
+
+  // Перевіряємо, чи аутентифікований користувач і чи має необхідну роль
   const hasRequiredRole = !requiredRole || userRole === requiredRole;
 
   return isAuthenticated && hasRequiredRole ? children : <Navigate to="/" />;
