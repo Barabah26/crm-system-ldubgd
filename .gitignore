@@ -42,6 +42,9 @@ logs/
 
 # Maven
 target/
+.mvn/
+mvnw
+mvnw.cmd
 !.mvn/wrapper/maven-wrapper.jar
 
 # Docker
