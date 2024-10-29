@@ -46,5 +46,14 @@ services:
       SPRING_DATASOURCE_PASSWORD: "${DATABASE_PASSWORD}"  # Використання змінної з .env
     depends_on:
       - database
+
+  frontend:
+    build:
+      context: ../frontend/stat-frontend  # Коренева директорія фронтенду, де розташований Dockerfile
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3001"  # Зовнішній порт 3000 відображається на внутрішній порт 3001 контейнера
+
+
 volumes:
   db_data:  # Зберігає дані бази даних між перезапусками контейнерів
