@@ -54,8 +54,15 @@ services:
     build:
       context: ../bot-for-uni
       dockerfile: ../bot-for-uni/Dockerfile
-#    ports:
-#      - "8000:8080"  # Відображаємо зовнішній порт 8000 на внутрішній порт 8080 контейнера
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/${DATABASE_NAME}  # Використовуйте правильний порт 5432
+      SPRING_DATASOURCE_USERNAME: "${DATABASE_USERNAME}"  # Використання змінної з .env
+      SPRING_DATASOURCE_PASSWORD: "${DATABASE_PASSWORD}"  # Використання змінної з .env
+
+    depends_on:
+      - database
+
 
   frontend:
     build:
