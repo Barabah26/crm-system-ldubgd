@@ -23,8 +23,8 @@ spring:
       data-locations: classpath:data.sql
   datasource:
     url: jdbc:postgresql://localhost:${DATABASE_PORT}/${DATABASE_NAME}
-    username: ${DATASOURCE_USERNAME}
-    password: ${DATASOURCE_PASSWORD}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     open-in-view: false
